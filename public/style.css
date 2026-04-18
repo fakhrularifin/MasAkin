@@ -332,10 +332,18 @@ body {
 
 /* Input Area */
 .chat-input-area {
-  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
   background: #fff;
   border-top: 1px solid rgba(224, 122, 95, 0.1);
   z-index: 5;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.7rem;
+  color: #bbb;
+  margin-top: 0.5rem;
+  font-family: "Nunito", sans-serif;
 }
 
 #chatForm {
