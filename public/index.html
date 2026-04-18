@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MasAkin - Asisten Dapur Cerdasmu</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Beautiful typography for the foodie vibe -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Nunito:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Floating shapes in background just for aesthetic effect -->
+      <div class="bg-shape shape-1"></div>
+      <div class="bg-shape shape-2"></div>
+
+      <header class="chat-header">
+        <div class="masakin-avatar">
+          <i class="fa-solid fa-fire-burner"></i>
+        </div>
+        <div class="header-info">
+          <h1>MasAkin</h1>
+          <p>Asisten Dapur Pintarmu 🍳</p>
+        </div>
+        <div class="header-decoration">
+          <button
+            id="new-ingredients-btn"
+            style="display: none"
+            title="Input Bahan Baru"
+            onclick="resetConversation()"
+          >
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <button
+            id="open-saved-btn"
+            title="Resep Tersimpan"
+            onclick="toggleSavedPanel()"
+          >
+            <i class="fa-solid fa-bookmark"></i>
+            <span id="saved-badge">0</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="chat-window" id="chatWindow">
+        <div class="welcome-banner">
+          <div class="banner-icon">🍽️</div>
+          <h2>Selamat Datang di Dapur!</h2>
+          <p>
+            Nggak usah pusing mau masak apa. Sebutin aja bahan-bahan yang ada di
+            kulkasmu, sekalian porsinya kalau perlu!
+          </p>
+        </div>
+        <!-- Chat bubbles will go here -->
+      </main>
+
+      <div class="quick-replies-wrapper" id="quickRepliesWrapper">
+        <div class="quick-replies" id="quickReplies">
+          <button
+            class="chip"
+            onclick="
+              quickSend(
+                'Ada telur, nasi sisa kemarin, sosis, bawang merah bawang putih',
+              )
+            "
+          >
+            🍳 Telur, Nasi & Sosis
+          </button>
+          <button
+            class="chip"
+            onclick="
+              quickSend('Daging ayam setengah matang, kentang, wortel, kecap')
+            "
+          >
+            🍗 Ayam & Sayur
+          </button>
+          <button
+            class="chip"
+            onclick="
+              quickSend('Cuma ada mie instan dan telur nih, buat 1 porsi')
+            "
+          >
+            🍜 Darurat Akhir Bulan
+          </button>
+        </div>
+      </div>
+
+      <footer class="chat-input-area">
+        <form id="chatForm">
+          <textarea
+            id="userInput"
+            placeholder="Ketik bahan yang kamu punya..."
+            autocomplete="off"
+            rows="1"
+          ></textarea>
+          <button type="submit" id="sendBtn" title="Kirim Resep!">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </footer>
+    </div>
+
+    <!-- Saved Recipes Panel -->
+    <div id="saved-panel" class="saved-panel hidden">
+      <div class="saved-panel-header">
+        <h2>Resep Tersimpan</h2>
+        <button id="close-saved-btn" onclick="toggleSavedPanel()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="saved-list" class="saved-list">
+        <!-- Saved recipe cards go here -->
+      </div>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal" class="recipe-modal hidden">
+      <div class="modal-content">
+        <button class="close-modal-btn" onclick="closeRecipeModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="recipe-modal-body" class="recipe-modal-body"></div>
+      </div>
+    </div>
+
+    <!-- Marked library for parsing markdown from Gemini response -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
