@@ -23,10 +23,15 @@
 body {
   font-family: "Nunito", sans-serif;
   color: var(--text-dark);
-  background-color: var(--primary-light);
-  /* Cheerful playful background with Polka Dots */
-  background-image: radial-gradient(var(--bg-color) 2px, transparent 2px);
-  background-size: 30px 30px;
+  background-color: var(
+    --primary-light
+  ); /* fallback jika bg.jpg gagal dimuat */
+  /* Overlay #f2a28c ~75% opacity di atas pattern bg.jpg */
+  background-image:
+    linear-gradient(rgba(242, 162, 140, 0.6), rgba(242, 162, 140, 0.6)),
+    url("bg.jpg");
+  background-size: auto 600px;
+  background-repeat: repeat;
   display: flex;
   justify-content: center;
   align-items: center;
